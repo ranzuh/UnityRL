@@ -45,7 +45,7 @@ public class LanderAgent : Agent
     public float torqueMultiplier = 1;
     private bool crashed = false;
     private bool landed = false;
-    public float ceilingHeight = 30;
+    public float ceilingHeight = 15;
     
     
     public override void OnActionReceived(float[] vectorAction)
