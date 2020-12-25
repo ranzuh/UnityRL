@@ -135,6 +135,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4982909230215363509}
     m_Modifications:
+    - target: {fileID: 3719210284965793468, guid: 85f9000415d64894fb68af3e4784474b, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 94556549c5b31f742929de01d5a89b51, type: 3}
+    - target: {fileID: 3719210284965793470, guid: 85f9000415d64894fb68af3e4784474b, type: 3}
+      propertyPath: startAngle
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4971087402122427628, guid: 85f9000415d64894fb68af3e4784474b, type: 3}
       propertyPath: m_Name
       value: Lander (1)
@@ -149,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8959122292366191068, guid: 85f9000415d64894fb68af3e4784474b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8959122292366191068, guid: 85f9000415d64894fb68af3e4784474b, type: 3}
       propertyPath: m_LocalPosition.z

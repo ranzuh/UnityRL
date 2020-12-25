@@ -165,12 +165,12 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
-  startAngle: 30
-  startHeight: 10
+  MaxStep: 1500
+  startAngle: 15
+  startHeight: 20
   forceMultiplier: 7
   torqueMultiplier: 0.3
-  ceilingHeight: 15
+  ceilingHeight: 30
   necessaryTime: 1.5
 --- !u!114 &3719210284965793443
 MonoBehaviour:
@@ -199,17 +199,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 5
+    VectorObservationSize: 8
     NumStackedVectorObservations: 1
-    VectorActionSize: 04000000
+    VectorActionSize: 06000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: 0e0890213985d5f4280ef75123afc4f9, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: bd0cd0c73a500ca4b8b64f9f7a266971, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: LunarLander
   TeamId: 0
   m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
 --- !u!1 &5032461846239226728
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,17 +28,20 @@ public class LanderAgent : Agent
         rb.velocity = Vector3.zero;
         transform.localPosition = new Vector3(0,startHeight,0);
         // transform.localRotation = Quaternion.identity;
-        transform.localEulerAngles = new Vector3(0, 0, Random.Range(-startAngle, startAngle));
+        transform.localEulerAngles = new Vector3(Random.Range(-startAngle, startAngle), 0, Random.Range(-startAngle, startAngle));
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        // observations size 5
+        // observations size 8
         sensor.AddObservation(transform.position.y);
         sensor.AddObservation(transform.eulerAngles.z);
+        sensor.AddObservation(transform.eulerAngles.x);
         sensor.AddObservation(rb.velocity.y);
         sensor.AddObservation(rb.velocity.x);
+        sensor.AddObservation(rb.velocity.z);
         sensor.AddObservation(rb.angularVelocity.z);
+        sensor.AddObservation(rb.angularVelocity.x);
     }
 
     public float forceMultiplier = 5;
@@ -50,33 +53,52 @@ public class LanderAgent : Agent
     
     public override void OnActionReceived(float[] vectorAction)
     {
-        // actions size 4
+        // actions size 6
 
         int action = (int)vectorAction[0];
 
         if (action == 1)
         {
             rb.AddRelativeForce(Vector3.up * forceMultiplier);
+            //Debug.Log("main engine");
         }
         else if (action == 2)
         {
             rb.AddRelativeTorque(Vector3.back * torqueMultiplier);
+            //Debug.Log("left");
         }
         else if (action == 3)
         {
             rb.AddRelativeTorque(Vector3.forward * torqueMultiplier);
+            //Debug.Log("right");
+        }
+        else if (action == 4)
+        {
+            rb.AddRelativeTorque(Vector3.left * torqueMultiplier);
+            //Debug.Log("forward");
+        }
+        else if (action == 5)
+        {
+            rb.AddRelativeTorque(Vector3.right * torqueMultiplier);
+            //Debug.Log("back");
         }
 
         // Debug.Log(vectorAction[0]);
         
         if (crashed)
         {
+            float crashReward = (2 - math.max(crashVelocity, -12.0f)) * 0.1f; // negative reward for crashing hard
             if (math.abs(transform.localEulerAngles.z) > 30.0f)
             {
                 Debug.Log("Bad crash -1");
-                SetReward(-1.0f);
+                //Debug.Log(-1.0f + crashReward);
+                SetReward(-1.0f + crashReward);
             }
-            Debug.Log("crashed");
+            else
+            {
+                Debug.Log("crashed");
+                SetReward(crashReward);
+            }
             EndEpisode();
             
         }
@@ -112,6 +134,14 @@ public class LanderAgent : Agent
         {
             actionsOut[0] = 3;
         }
+        else if (Input.GetButton("Up"))
+        {
+            actionsOut[0] = 4;
+        }
+        else if (Input.GetButton("Down"))
+        {
+            actionsOut[0] = 5;
+        }
         else
         {
             actionsOut[0] = 0;
@@ -119,6 +149,7 @@ public class LanderAgent : Agent
     }
 
     private bool collision;
+    private float crashVelocity;
     
     private void OnCollisionEnter(Collision other)
     {
@@ -131,6 +162,7 @@ public class LanderAgent : Agent
         if (relativeVelocity > 2)
         {
             crashed = true;
+            crashVelocity = relativeVelocity;
         }
 
 
