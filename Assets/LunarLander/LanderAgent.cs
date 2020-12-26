@@ -54,45 +54,26 @@ public class LanderAgent : Agent
     
     public override void OnActionReceived(float[] vectorAction)
     {
-        // actions size 6
+        // actions size 3 continuous
 
         if (StepCount == MaxStep)
         {
             Debug.Log("Max steps reached");
-            SetReward(-2.0f);
+            AddReward(-2.0f);
             EndEpisode();
         }
-
-        int action = (int)vectorAction[0];
-
-        if (action == 1)
-        {
-            rb.AddRelativeForce(Vector3.up * forceMultiplier);
-            //Debug.Log("main engine");
-        }
-        else if (action == 2)
-        {
-            rb.AddRelativeTorque(Vector3.back * torqueMultiplier);
-            //Debug.Log("left");
-        }
-        else if (action == 3)
-        {
-            rb.AddRelativeTorque(Vector3.forward * torqueMultiplier);
-            //Debug.Log("right");
-        }
-        else if (action == 4)
-        {
-            rb.AddRelativeTorque(Vector3.left * torqueMultiplier);
-            //Debug.Log("forward");
-        }
-        else if (action == 5)
-        {
-            rb.AddRelativeTorque(Vector3.right * torqueMultiplier);
-            //Debug.Log("back");
-        }
-
-        // Debug.Log(vectorAction[0]);
         
+        var thrust = (vectorAction[0] + 1) / 2;
+
+        rb.AddRelativeForce(Vector3.up * thrust * forceMultiplier);
+        AddReward(thrust / -1000);
+        
+        var torqueSignal = new Vector3();
+        torqueSignal.z = vectorAction[1];
+        torqueSignal.x = vectorAction[2];
+        
+        rb.AddRelativeTorque(torqueSignal * torqueMultiplier);
+
         if (crashed)
         {
             float crashReward = (2 - math.max(crashVelocity, -12.0f)) * 0.1f; // negative reward for crashing hard
@@ -100,12 +81,12 @@ public class LanderAgent : Agent
             {
                 Debug.Log("Bad crash -1");
                 //Debug.Log(-1.0f + crashReward);
-                SetReward(-1.0f + crashReward);
+                AddReward(-1.0f + crashReward);
             }
             else
             {
                 Debug.Log("crashed");
-                SetReward(crashReward);
+                AddReward(crashReward);
             }
             EndEpisode();
             
@@ -114,14 +95,14 @@ public class LanderAgent : Agent
         else if (landed)
         {
             Debug.Log("landed");
-            SetReward(1.0f);
+            AddReward(1.0f);
             EndEpisode();
         }
 
         if (transform.localPosition.y < 0 || transform.localPosition.y > ceilingHeight)
         {
             Debug.Log("Ceiling reached");
-            SetReward(-2.0f);
+            AddReward(-2.0f);
             EndEpisode();
         }
         
@@ -131,30 +112,9 @@ public class LanderAgent : Agent
     
     public override void Heuristic(float[] actionsOut)
     {
-        if (Input.GetButton("Jump"))
-        {
-            actionsOut[0] = 1;
-        }
-        else if (Input.GetButton("Right"))
-        {
-            actionsOut[0] = 2;
-        }
-        else if (Input.GetButton("Left"))
-        {
-            actionsOut[0] = 3;
-        }
-        else if (Input.GetButton("Up"))
-        {
-            actionsOut[0] = 4;
-        }
-        else if (Input.GetButton("Down"))
-        {
-            actionsOut[0] = 5;
-        }
-        else
-        {
-            actionsOut[0] = 0;
-        }
+        actionsOut[0] = Input.GetAxisRaw("Jump") * 2 - 1;
+        actionsOut[1] = Input.GetAxisRaw("Horizontal");
+        actionsOut[2] = Input.GetAxisRaw("Vertical");
     }
 
     private bool collision;

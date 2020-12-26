@@ -201,10 +201,10 @@ MonoBehaviour:
   m_BrainParameters:
     VectorObservationSize: 8
     NumStackedVectorObservations: 1
-    VectorActionSize: 06000000
+    VectorActionSize: 03000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: e47f13974af48a14482f37cc660ef9ab, type: 3}
+    VectorActionSpaceType: 1
+  m_Model: {fileID: 5022602860645237092, guid: 2b379dfb96513e342801460593df3770, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: LunarLander

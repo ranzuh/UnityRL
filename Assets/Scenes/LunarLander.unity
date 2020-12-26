@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
 --- !u!1 &86897030
@@ -414,6 +418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
 --- !u!1001 &371338118
@@ -470,6 +478,10 @@ PrefabInstance:
     - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
       propertyPath: m_Name
       value: TrainingArea (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
@@ -528,6 +540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
 --- !u!1001 &673777147
@@ -585,6 +601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
 --- !u!1001 &752436063
@@ -641,6 +661,10 @@ PrefabInstance:
     - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
       propertyPath: m_Name
       value: TrainingArea (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
@@ -755,6 +779,10 @@ PrefabInstance:
     - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
       propertyPath: m_Name
       value: TrainingArea (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
@@ -906,6 +934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
 --- !u!1001 &1632135880
@@ -962,6 +994,10 @@ PrefabInstance:
     - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
       propertyPath: m_Name
       value: TrainingArea (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
@@ -1020,6 +1056,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
 --- !u!1001 &1850862187
@@ -1076,6 +1116,10 @@ PrefabInstance:
     - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
       propertyPath: m_Name
       value: TrainingArea (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
@@ -1134,6 +1178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
 --- !u!1001 &1952523653
@@ -1191,6 +1239,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingArea (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
 --- !u!1001 &2113110907
@@ -1247,6 +1299,10 @@ PrefabInstance:
     - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
       propertyPath: m_Name
       value: TrainingArea (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497040897150409309, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00649342ca25d8042b41bff0b8a37b67, type: 3}
