@@ -166,7 +166,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1500
-  startAngle: 15
+  startAngle: 30
   startHeight: 20
   forceMultiplier: 7
   torqueMultiplier: 0.3
@@ -204,7 +204,7 @@ MonoBehaviour:
     VectorActionSize: 06000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: bd0cd0c73a500ca4b8b64f9f7a266971, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e47f13974af48a14482f37cc660ef9ab, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: LunarLander

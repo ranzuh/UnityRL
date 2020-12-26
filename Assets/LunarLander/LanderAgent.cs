@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using Unity.MLAgents; 
 using Unity.MLAgents.Sensors;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class LanderAgent : Agent
@@ -17,8 +18,8 @@ public class LanderAgent : Agent
         Physics.IgnoreLayerCollision(3, 3);
     }
 
-    public float startAngle = 15.0f;
-    public float startHeight = 10.0f;
+    public float startAngle = 30.0f;
+    public float startHeight = 20.0f;
     
     public override void OnEpisodeBegin()
     {
@@ -44,16 +45,23 @@ public class LanderAgent : Agent
         sensor.AddObservation(rb.angularVelocity.x);
     }
 
-    public float forceMultiplier = 5;
-    public float torqueMultiplier = 1;
+    public float forceMultiplier = 7;
+    public float torqueMultiplier = 0.3f;
     private bool crashed = false;
     private bool landed = false;
-    public float ceilingHeight = 15;
+    public float ceilingHeight = 30;
     
     
     public override void OnActionReceived(float[] vectorAction)
     {
         // actions size 6
+
+        if (StepCount == MaxStep)
+        {
+            Debug.Log("Max steps reached");
+            SetReward(-2.0f);
+            EndEpisode();
+        }
 
         int action = (int)vectorAction[0];
 
@@ -112,6 +120,7 @@ public class LanderAgent : Agent
 
         if (transform.localPosition.y < 0 || transform.localPosition.y > ceilingHeight)
         {
+            Debug.Log("Ceiling reached");
             SetReward(-2.0f);
             EndEpisode();
         }
