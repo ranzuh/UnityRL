@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using Unity.MLAgents; 
+using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -11,8 +11,9 @@ using Random = UnityEngine.Random;
 public class LanderAgent : Agent
 {
     private Rigidbody rb;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         Physics.IgnoreLayerCollision(3, 3);
@@ -20,16 +21,17 @@ public class LanderAgent : Agent
 
     public float startAngle = 30.0f;
     public float startHeight = 20.0f;
-    
+
     public override void OnEpisodeBegin()
     {
         crashed = false;
         landed = false;
         rb.angularVelocity = Vector3.zero;
         rb.velocity = Vector3.zero;
-        transform.localPosition = new Vector3(0,startHeight,0);
+        transform.localPosition = new Vector3(0, startHeight, 0);
         // transform.localRotation = Quaternion.identity;
-        transform.localEulerAngles = new Vector3(Random.Range(-startAngle, startAngle), 0, Random.Range(-startAngle, startAngle));
+        transform.localEulerAngles =
+            new Vector3(Random.Range(-startAngle, startAngle), 0, Random.Range(-startAngle, startAngle));
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -50,8 +52,8 @@ public class LanderAgent : Agent
     private bool crashed = false;
     private bool landed = false;
     public float ceilingHeight = 30;
-    
-    
+
+
     public override void OnActionReceived(float[] vectorAction)
     {
         // actions size 3 continuous
@@ -62,16 +64,16 @@ public class LanderAgent : Agent
             AddReward(-2.0f);
             EndEpisode();
         }
-        
-        var thrust = (vectorAction[0] + 1) / 2;
+
+        var thrust = (vectorAction[0] + 1) / 2; // map [-1, 1] to [0, 1] for PPO
 
         rb.AddRelativeForce(Vector3.up * thrust * forceMultiplier);
         AddReward(thrust / -1000);
-        
+
         var torqueSignal = new Vector3();
         torqueSignal.z = vectorAction[1];
         torqueSignal.x = vectorAction[2];
-        
+
         rb.AddRelativeTorque(torqueSignal * torqueMultiplier);
 
         if (crashed)
@@ -88,10 +90,10 @@ public class LanderAgent : Agent
                 Debug.Log("crashed");
                 AddReward(crashReward);
             }
+
             EndEpisode();
-            
         }
-        
+
         else if (landed)
         {
             Debug.Log("landed");
@@ -105,27 +107,25 @@ public class LanderAgent : Agent
             AddReward(-2.0f);
             EndEpisode();
         }
-        
     }
 
 
-    
     public override void Heuristic(float[] actionsOut)
     {
-        actionsOut[0] = Input.GetAxisRaw("Jump") * 2 - 1;
+        actionsOut[0] = Input.GetAxisRaw("Jump") * 2 - 1; // map [0, 1] to [-1, 1]
         actionsOut[1] = Input.GetAxisRaw("Horizontal");
         actionsOut[2] = Input.GetAxisRaw("Vertical");
     }
 
     private bool collision;
     private float crashVelocity;
-    
+
     private void OnCollisionEnter(Collision other)
     {
         collision = true;
-        
+
         float relativeVelocity = other.relativeVelocity.y;
-        
+
         //Debug.Log("Collision " + pointVelocity);
 
         if (relativeVelocity > 2)
@@ -133,8 +133,6 @@ public class LanderAgent : Agent
             crashed = true;
             crashVelocity = relativeVelocity;
         }
-
-
     }
 
     private void Update()
