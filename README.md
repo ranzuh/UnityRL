@@ -1,6 +1,8 @@
 # UnityRL
 
-My reinforcement learning experiments with Unity ML Agents Toolkit.
+![unitylander](https://user-images.githubusercontent.com/13645811/116148963-44195100-a6ea-11eb-8f51-ba3e09fef341.gif)
+
+My reinforcement learning experiments with Unity ML Agents Toolkit. Training reinforcement learning agents to land a rocket in 3D environment!
 
 https://github.com/Unity-Technologies/ml-agents
 
