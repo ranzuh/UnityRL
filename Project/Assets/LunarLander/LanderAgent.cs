@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using Unity.MLAgents;
+using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -54,7 +55,7 @@ public class LanderAgent : Agent
     public float ceilingHeight = 30;
 
 
-    public override void OnActionReceived(float[] vectorAction)
+    public override void OnActionReceived(ActionBuffers actions)
     {
         // actions size 3 continuous
 
@@ -65,14 +66,14 @@ public class LanderAgent : Agent
             EndEpisode();
         }
 
-        var thrust = (vectorAction[0] + 1) / 2; // map [-1, 1] to [0, 1] for PPO
+        var thrust = (actions.ContinuousActions[0] + 1) / 2; // map [-1, 1] to [0, 1] for PPO
 
         rb.AddRelativeForce(Vector3.up * thrust * forceMultiplier);
         AddReward(thrust / -1000);
 
         var torqueSignal = new Vector3();
-        torqueSignal.z = vectorAction[1];
-        torqueSignal.x = vectorAction[2];
+        torqueSignal.z = actions.ContinuousActions[1];
+        torqueSignal.x = actions.ContinuousActions[2];
 
         rb.AddRelativeTorque(torqueSignal * torqueMultiplier);
 
@@ -110,11 +111,11 @@ public class LanderAgent : Agent
     }
 
 
-    public override void Heuristic(float[] actionsOut)
+    public override void Heuristic(in ActionBuffers actionsOut)
     {
-        actionsOut[0] = Input.GetAxisRaw("Jump") * 2 - 1; // map [0, 1] to [-1, 1]
-        actionsOut[1] = Input.GetAxisRaw("Horizontal");
-        actionsOut[2] = Input.GetAxisRaw("Vertical");
+        actionsOut.ContinuousActions.Array[0] = Input.GetAxisRaw("Jump") * 2 - 1; // map [0, 1] to [-1, 1]
+        actionsOut.ContinuousActions.Array[1] = Input.GetAxisRaw("Horizontal");
+        actionsOut.ContinuousActions.Array[2] = Input.GetAxisRaw("Vertical");
     }
 
     private bool collision;

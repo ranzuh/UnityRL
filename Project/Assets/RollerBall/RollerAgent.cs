@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.MLAgents; 
+using Unity.MLAgents;
+using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using Random = UnityEngine.Random;
 
@@ -43,13 +44,13 @@ public class RollerAgent : Agent
     }
     
     public float forceMultiplier = 10;
-    
-    public override void OnActionReceived(float[] vectorAction)
+
+    public override void OnActionReceived(ActionBuffers actions)
     {
         // Actions, size = 2
         Vector3 controlSignal = Vector3.zero;
-        controlSignal.x = vectorAction[0];
-        controlSignal.z = vectorAction[1];
+        controlSignal.x = actions.ContinuousActions[0];
+        controlSignal.z = actions.ContinuousActions[1];
         rb.AddForce(controlSignal * forceMultiplier);
 
         float distanceToTarget = Vector3.Distance(this.transform.localPosition, target.localPosition);
@@ -68,9 +69,9 @@ public class RollerAgent : Agent
         }
     }
 
-    public override void Heuristic(float[] actionsOut)
+    public override void Heuristic(in ActionBuffers actionsOut)
     {
-        actionsOut[0] = Input.GetAxisRaw("Horizontal");
-        actionsOut[1] = Input.GetAxisRaw("Vertical");
+        actionsOut.ContinuousActions.Array[0] = Input.GetAxisRaw("Horizontal");
+        actionsOut.ContinuousActions.Array[1] = Input.GetAxisRaw("Vertical");
     }
 }
